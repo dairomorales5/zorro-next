@@ -16,7 +16,7 @@ const Mensaje = (props) => {
         {mensajes.map((mensaje, index) => {
           return (
             <div key={index}>
-            <Card shadow className={`max-w-xl ${mensaje.usuario===process.env.NEXT_PUBLIC_ASSISTANT_NAME ? 'float-left self-start bg-blue-200' : 'float-right self-end bg-green-200'}`}>
+            <Card shadow className={`max-w-xl ${mensaje.usuario===process.env.NEXT_PUBLIC_ASSISTANT_NAME ? 'float-left self-start bg-blue-400' : 'float-right self-end bg-green-400'}`}>
               <CardHeader className="flex gap-3">
                 {mensaje.imagen && <Image src={mensaje.imagen.logo_Zorro.src} width={40} height={40} alt='' />}
                 <div className='flex flex-col'>
