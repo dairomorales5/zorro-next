@@ -1,11 +1,6 @@
-import { getOpciones } from "../lib/data";
-import { parseRowOpciones } from "../lib/functions";
-
 import {NavbarContent, NavbarItem, Button, Select, SelectItem} from "@nextui-org/react";
 
-export default async function SeleccionarProfesor({handleSubmit, handleProfesor, profesor, materia}) {
-  const opciones_row = await getOpciones();
-  const opciones = parseRowOpciones(opciones_row);
+export default function SeleccionarProfesor({handleSubmit, handleProfesor, profesor, materia, opciones}) {
   return <>
       <form onSubmit={handleSubmit} className="gap-4 flex-grow">
       <NavbarContent justify="center">

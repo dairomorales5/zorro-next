@@ -3,18 +3,15 @@ import Progreso from "../components/Progreso"
 import Mensajes from '../components/Mensajes';
 import CajaTexto from "../components/CajaTexto";
 import AudioRecorder from "../components/AudioRecorder";
-import { parseRowOpciones } from "../lib/functions";
 
 import { ScrollShadow } from "@nextui-org/react"
 import { Suspense } from "react";
-
 import { getOpciones } from "../lib/data";
 
-
-export default async function Calificar() {
+export default async function Page() {
   const opciones = await getOpciones();
   return <>
-  <Header opciones={parseRowOpciones(opciones)} />
+  <Header opciones={opciones} />
   
   <section className="flex flex-row flex-1 overflow-auto p-4 w-screen">
     <Progreso className="w-1/4" />
@@ -26,7 +23,7 @@ export default async function Calificar() {
   <section className="flex flex-row w-screen">
     <CajaTexto />
     <Suspense fallback={<div>Loading...</div>}>
-    <AudioRecorder />
+      <AudioRecorder />
     </Suspense>
   </section>
   </>
