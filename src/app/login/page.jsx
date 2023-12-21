@@ -9,7 +9,7 @@ export default function Login() {
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push('/calificar?profesor=Pedro%20Caro&materia=Ciencias');
+    router.push('/calificar?profesor=Pedro%20Caro&materia=Historia');
   }
   return <>
     <h1>Accede a calificar a tus profesores</h1>

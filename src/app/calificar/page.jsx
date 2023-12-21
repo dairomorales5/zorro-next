@@ -6,13 +6,13 @@ import AudioRecorder from "../components/AudioRecorder";
 
 import { ScrollShadow } from "@nextui-org/react"
 import { Suspense } from "react";
-import { getOpciones } from "../lib/data";
 
-export default async function Page() {
-  const opciones = await getOpciones();
+
+export default function Page({ searchParams }) {
   return <>
-  <Header opciones={opciones} />
-  
+  <Suspense fallback={<div>Loading...</div>}>
+    <Header profesor={searchParams.profesor} materia={searchParams.materia} />
+  </Suspense>
   <section className="flex flex-row flex-1 overflow-auto p-4 w-screen">
     <Progreso className="w-1/4" />
     <ScrollShadow hideScrollBar size={100} className="flex-1">
