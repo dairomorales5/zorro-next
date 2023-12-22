@@ -2,16 +2,9 @@
 import {NavbarContent, NavbarItem, Button, Select, SelectItem} from "@nextui-org/react";
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { useState, useContext, useEffect } from 'react';
-
-import { ContextoConversacion } from '../context/context';
-
-const useConversacion = () => {
-  return useContext(ContextoConversacion);
-}
+import { useState } from 'react';
 
 export default function SeleccionarProfesor({ opciones }) {
-  const {agregarMensaje} = useConversacion();
   const searchParams = useSearchParams();
   const [profesor, setProfesor] = useState(searchParams.get('profesor'));
   const [materia, setMateria] = useState(searchParams.get('materia'));
@@ -31,13 +24,6 @@ export default function SeleccionarProfesor({ opciones }) {
     params.set('materia',mate.value);
     replace(pathname+'?'+params.toString());
   }
-
-  useEffect(() => {
-    agregarMensaje(`¡Hola! Soy ZORRO. Un chatbot especializado en obtener la percepción de estudiantes universitarios sobre sus profesores.
-    Me gustaría conocer tu opinión sobre el profesor ${profesor} en la materia ${materia}.
-    Siéntete libre de poner aquí tu opinión.`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profesor, materia]);
 
   return <>
       <form onSubmit={handleSubmit} className="gap-4 flex-grow">

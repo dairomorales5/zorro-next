@@ -5,13 +5,11 @@ import logo_Zorro from '../img/logo_Zorro.jpeg'
 import {Avatar, Navbar, NavbarBrand} from "@nextui-org/react";
 
 import SeleccionarProfesor from './SeleccionarProfesor';
-import { getOpciones, getConversation } from "../lib/data";
+import { getOpciones } from "../lib/data";
 import Link from 'next/link';
 
-export default async function Header({ profesor, materia }) {
+export default async function Header() {
   const opciones = await getOpciones();
-  const conversaciones = await getConversation(profesor, materia);
-  console.log(conversaciones);
     return (
     <Navbar>
       <Link href="/">

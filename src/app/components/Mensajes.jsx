@@ -1,7 +1,7 @@
 'use client'
 // Componente para renderizar los mensajes tanto del usuario como del sistema
 
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { ContextoConversacion } from '../context/context';
 
 import {Card, CardHeader, CardBody, Image, Divider} from "@nextui-org/react";
@@ -9,10 +9,15 @@ import {Card, CardHeader, CardBody, Image, Divider} from "@nextui-org/react";
 const useConversacion = () => {
     return useContext(ContextoConversacion);
 }
-const Mensaje = (props) => {
-  const {mensajes} = useConversacion();
+const Mensaje = ({ mensajes_server }) => {
+  const {mensajes,setMensajes} = useConversacion();
+  
+  useEffect(() => {
+    setMensajes(mensajes_server);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mensajes_server]);
   return (
-      <div className={props.className}>
+      <>
         {mensajes.map((mensaje, index) => {
           return (
             <div key={index}>
@@ -31,7 +36,7 @@ const Mensaje = (props) => {
             </div>
           );
         })}
-      </div>
+      </>
   );
 }
 

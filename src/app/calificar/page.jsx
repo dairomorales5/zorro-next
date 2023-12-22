@@ -1,23 +1,23 @@
 import Header from "../components/Header"
 import Progreso from "../components/Progreso"
-import Mensajes from '../components/Mensajes';
 import CajaTexto from "../components/CajaTexto";
 import AudioRecorder from "../components/AudioRecorder";
+import ServerConversacion from "../components/ServerConversacion";
 
-import { ScrollShadow } from "@nextui-org/react"
 import { Suspense } from "react";
 
 
 export default function Page({ searchParams }) {
+  const { profesor, materia } = searchParams;
   return <>
   <Suspense fallback={<div>Loading...</div>}>
-    <Header profesor={searchParams.profesor} materia={searchParams.materia} />
+    <Header />
   </Suspense>
   <section className="flex flex-row flex-1 overflow-auto p-4 w-screen">
     <Progreso className="w-1/4" />
-    <ScrollShadow hideScrollBar size={100} className="flex-1">
-      <Mensajes />
-    </ScrollShadow>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ServerConversacion profesor={profesor} materia={materia} />
+    </Suspense>
   </section>
 
   <section className="flex flex-row w-screen">
